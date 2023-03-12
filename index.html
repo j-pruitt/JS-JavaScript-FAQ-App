@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript FAQ</title>
+    <!-- font awesome-->
+    <script src="https://kit.fontawesome.com/67ce6372ad.js" crossorigin="anonymous"></script>
+    <!-- styles -->
+    <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+    <section class="questions">
+        <!-- title -->
+        <div class="title">
+            <h2>JavaScript FAQ</h2>
+            <div class="underline"></div>
+        </div>
+        <!-- questions -->
+        <div class="section-center">
+
+            <!-- single question 1 -->
+            <article class="question">
+                <!-- question title -->
+                <div class="question-title">
+                    <p>What is prototypical inheritance and how useful is it?</p>
+                        <button type="button" class="question-btn">
+                            <span class="plus-icon">
+                                <i class="fa-solid fa-plus"></i>
+                            </span>
+                            <span class="minus-icon">
+                                <i class="fa-solid fa-minus"></i>
+                            </span>
+                        </button>
+                    </div>
+                <!-- question text -->
+                <div class="question-text">
+                    <hr>
+                    <p>In JavaScript, almost everything is an object. Every object has a prototype, from which it inherits values and behaviours. If an object doesn't include a property that's being requested, JS will look for it inside its prototype instead. It carries on up the chain of prototypes until it finds a match, or returns an error.</p>
+                    <p>This is useful when making objects that share the same values and operations. By having these live on a prototype, only one copy of them needs to exist, making projects memory efficient.</p>
+                    <pre>
+<code class="language-javascript">var parent = {inherit: true}
+var childA = Object.create(parent);
+var childB = {};
+Object.setPrototypeOf(childB, parent);
+class childC extends parent {}</code></pre>    
+                    <p>Prototypes can be added to objects on creation using <b>Object.create()</b>, or after with <b>Object.setPrototypeOf()</b>. ES2015 has a 'class' keyword that, when used with 'extends', will use that value as its prototype.</p>
+                </div>
+            </article>
+            <!-- end single question 1 -->
+
+            <!-- single question 2 -->
+            <article class="question">
+                <!-- question title -->
+                <div class="question-title">
+                    <p>What does 'use strict' mean at the top of a block of code?</p>
+                        <button type="button" class="question-btn">
+                            <span class="plus-icon">
+                                <i class="fa-solid fa-plus"></i>
+                            </span>
+                            <span class="minus-icon">
+                                <i class="fa-solid fa-minus"></i>
+                            </span>
+                        </button>
+                    </div> 
+                <!-- question text -->
+                <div class="question-text">
+                    <hr>
+                    <p>ES5 introduced an optional variant of JavaScript called 'strict mode'. In strict mode, quirks of earlier versions would throw errors rather than result in unintended behaviour.</p>
+                    <pre class="line-numbers">
+<code class="language-javascript">function strictFunction() {
+    'use strict';
+myVar = 4; //ReferenceError }</code></pre>
+                     <p>Above we are accessing a variable that doesn't exist. Outside of strict mode, this would instead add myVar to the global scope, which if we are not careful could completely overwrite functionality defined earlier in the script. In strict mode, this throws an error and halts any destruction. ES2015 modules are in strict mode by default, but in closures created with functions, 'use strict' can be applied at a function level as well as an entire file. </p>
+                </div>
+            </article>
+            <!-- end single question 2 -->
+
+            <!-- single question 3 -->
+            <article class="question">
+                <!-- question title -->
+                <div class="question-title">
+                    <p>Where should I use the 'let' and 'const' keywords instead of 'var'?</p>
+                        <button type="button" class="question-btn">
+                            <span class="plus-icon">
+                                <i class="fa-solid fa-plus"></i>
+                            </span>
+                            <span class="minus-icon">
+                                <i class="fa-solid fa-minus"></i>
+                            </span>
+                        </button>
+                    </div>
+                <!-- question text -->
+                <div class="question-text">
+                    <hr>
+                    <p>Another fundamental change with ES2015 was the introduction of 'let' and 'const' as alternative ways to define variables. Variables declared in this way are limited to the block they were defined in. This provides more certainty that values created inside different blocks won't interfere with code outside.</p>
+                <pre class="line-numbers">
+<code class="language-javascript">for(let x=1; x<=3; x++) {
+console.log(x); // 1, 2, 3}
+console.log(x); // "x is not defined"</code></pre>
+                     <p>If the value of the variable will not change, use 'const' instead of 'let'. Errors are thrown when attempting to redefine a constant. Objects and array variables can still change internally, but are not completely replaced.</p>
+                     <p>Both 'let' and 'const' do not get hoisted like 'var', so cannot be referenced before they are initialised. Between the start of the block and the initialisation is known as the 'temporal dead zone' and can often be a source of confusion.</p>
+                </div>
+            </article>
+            <!-- end single question 3 -->
+        </div>
+    </section>
+    <!-- Javascript -->
+    <script src="app.js"></script>
+</body>
+</html>
